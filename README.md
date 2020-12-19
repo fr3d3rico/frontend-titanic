@@ -22,6 +22,10 @@ https://react-bootstrap.github.io/
 
 Execute o comando `git clone` para clonar o projeto para a sua estação de trabalho.
 
+### `npm install`
+
+Entre no diretório do projeto e baixe as dependências com o comando `npm install`
+
 ### `npm start`
 
 Execute o comando `npm start` para executar no localhost e porta 3000.
