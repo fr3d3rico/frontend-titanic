@@ -1,19 +1,16 @@
 import React from 'react';
 import { MemoryRouter, Switch, Route } from 'react-router-dom';
 
+import Login from './components/Login.component';
+import Home from './components/Home.component';
+import About from './components/About.component';
+import Users from './components/Users.component';
+
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
-
-import './App.css';
-
-const Home = () => <span>Home</span>;
-
-const About = () => <span>About</span>;
-
-const Users = () => <span>Users</span>;
 
 const App = () => (
   <MemoryRouter>
@@ -28,6 +25,9 @@ const App = () => (
             </Route>
             <Route path="/users">
               <Users />
+            </Route>
+            <Route path="/login">
+              <Login />
             </Route>
             <Route path="/">
               <Home />
@@ -45,6 +45,9 @@ const App = () => (
             </LinkContainer>
             <LinkContainer to="/users">
               <Button>Users</Button>
+            </LinkContainer>
+            <LinkContainer to="/login">
+              <Button>Login</Button>
             </LinkContainer>
           </ButtonToolbar>
         </h2>
