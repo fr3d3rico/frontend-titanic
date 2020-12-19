@@ -16,6 +16,16 @@ https://react-redux.js.org/
 
 https://react-bootstrap.github.io/
 
+## Clonar e Rodar o Projeto
+
+### `git clone https://github.com/fr3d3rico/frontend-titanic.git`
+
+Execute o comando `git clone` para clonar o projeto para a sua estação de trabalho.
+
+### `npm start`
+
+Execute o comando `npm start` para executar no localhost e porta 3000.
+
 ## Membros
 
 @fr3d3rico Fred
