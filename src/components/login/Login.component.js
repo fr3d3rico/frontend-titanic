@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Container, Row, Form, Button } from 'react-bootstrap';
 
-import LoginApi from '../services/LoginApi.service';
-
-
+import LoginApi from '../../services/LoginApi.service';
 
 const Login = () => {
 
@@ -39,7 +37,7 @@ const Login = () => {
                         </Form.Group>
                         <Button variant="primary" type="submit" onClick={loginHandler}>
                             Entrar
-                        </Button>
+                            </Button>
                     </Form>
                 </Col>
                 <Col></Col>

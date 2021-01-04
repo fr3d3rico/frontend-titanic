@@ -10,6 +10,7 @@ const LoginApi = (usuario) => {
         })
         .catch(err => {
             console.log(err);
+            //throw err;
         });
 
 }
