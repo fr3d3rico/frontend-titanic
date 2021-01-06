@@ -1,22 +1,34 @@
 import React, { useState } from 'react';
-import { Col, Container, Row, Form, Button } from 'react-bootstrap';
+import { Alert, Col, Container, Row, Form, Button } from 'react-bootstrap';
 
 import LoginApi from '../../services/LoginApi.service';
+import loginValidation from './Login.validation';
 
 const Login = () => {
 
     const [usuario, setUsuario] = useState();
+    const [msgValidacao, setMsgValidacao] = useState();
 
     const handleInputChange = e => {
         setUsuario({
             ...usuario,
             [e.target.name]: e.target.value,
         });
+        setMsgValidacao(undefined);
     }
 
-    const loginHandler = (event) => {
+    const loginHandler = async (event) => {
         event.preventDefault();
-        LoginApi(usuario);
+
+        const { error } = await loginValidation(usuario);
+
+        if (error) {
+            //Implementar
+            await setMsgValidacao(error);
+        }
+        else {
+            LoginApi(usuario);
+        }
     }
 
     return (
@@ -37,7 +49,11 @@ const Login = () => {
                         </Form.Group>
                         <Button variant="primary" type="submit" onClick={loginHandler}>
                             Entrar
-                            </Button>
+                        </Button>
+                        {msgValidacao !== undefined ?
+                            <Alert variant='warning'>{msgValidacao.message}</Alert>
+                            : ''
+                        }
                     </Form>
                 </Col>
                 <Col></Col>
