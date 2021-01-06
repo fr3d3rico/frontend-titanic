@@ -30,9 +30,9 @@ const Home = () => {
 
                     <Switch>
                         <Route exact path="/" />
-                        <Route path="/about" render={() => (<ErrorBoundary key="222"><About /></ErrorBoundary>)} />
-                        <Route path="/login" render={() => (<ErrorBoundary key="/login"><Login /></ErrorBoundary>)} />
-                        <Route path="/users" render={() => (<ErrorBoundary key="/users"><Users /></ErrorBoundary>)} />
+                        <Route path="/about" render={() => (<ErrorBoundary key="aboutEB"><About /></ErrorBoundary>)} />
+                        <Route path="/login" render={() => (<ErrorBoundary key="loginEB"><Login /></ErrorBoundary>)} />
+                        <Route path="/users" render={() => (<ErrorBoundary key="usersEB"><Users /></ErrorBoundary>)} />
                     </Switch>
 
                 </Jumbotron>
