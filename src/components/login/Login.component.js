@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Col, Container, Row, Form, Button } from 'react-bootstrap';
+import { Alert, Col, Container, Row, Form, Button, Jumbotron, Media } from 'react-bootstrap';
 
 import LoginApi from '../../services/LoginApi.service';
 import loginValidation from './Login.validation';
@@ -32,32 +32,44 @@ const Login = () => {
     }
 
     return (
-        <Container fluid>
-            <Row>
-                <Col></Col>
-                <Col>
+        <Container>
+            <Jumbotron>
+                <Row>
+                    <Col>
+                        <Media>
+                            <img src="" alt="Logo" />
+                        </Media>
+                    </Col>
+                </Row>
+                <Row>
                     <Form>
-                        <Form.Group controlId="formBasicUsuario">
-                            <Form.Label>
-                                Usuário
+                        <Col></Col>
+                        <Col>
+                            <Form.Group controlId="formBasicUsuario">
+                                <Form.Label>
+                                    Usuário
                             </Form.Label>
-                            <Form.Control type="text" placeholder="Informe seu Usuário" name="usuario" onChange={handleInputChange} />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicSenha">
-                            <Form.Label>Senha</Form.Label>
-                            <Form.Control type="password" placeholder="Informe sua Senha" name="senha" onChange={handleInputChange} />
-                        </Form.Group>
-                        <Button variant="primary" type="submit" onClick={loginHandler}>
-                            Entrar
+                                <Form.Control type="text" placeholder="Informe seu Usuário" name="usuario" onChange={handleInputChange} />
+                            </Form.Group>
+                            <Form.Group controlId="formBasicSenha">
+                                <Form.Label>Senha</Form.Label>
+                                <Form.Control type="password" placeholder="Informe sua Senha" name="senha" onChange={handleInputChange} />
+                            </Form.Group>
+                            <Button variant="primary" type="submit" onClick={loginHandler}>
+                                Entrar
                         </Button>
-                        {msgValidacao !== undefined ?
-                            <Alert variant='warning'>{msgValidacao.message}</Alert>
-                            : ''
-                        }
+                            {msgValidacao !== undefined ?
+                                <Alert variant='warning' onClose={() => setMsgValidacao(undefined)} dismissible>
+                                    {msgValidacao.message}
+                                </Alert>
+                                : ''
+                            }
+
+                        </Col>
+                        <Col></Col>
                     </Form>
-                </Col>
-                <Col></Col>
-            </Row>
+                </Row>
+            </Jumbotron>
         </Container >
     );
 }
