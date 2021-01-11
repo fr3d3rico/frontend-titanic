@@ -22,8 +22,8 @@ const Home = () => {
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="mr-auto">
                                 <LinkRouter to="/about">About</LinkRouter>
-                                <LinkRouter to="/login">Login</LinkRouter>
                                 <LinkRouter to="/users">Users</LinkRouter>
+                                <LinkRouter to="/login">Login</LinkRouter>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
