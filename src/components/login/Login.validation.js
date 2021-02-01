@@ -7,7 +7,8 @@ const loginValidation = (data) => {
 
     const Schema = Joi.object({
         usuario: Joi.string().min(usuario_tamanho_minimo).required().error(new Error(`Usuário deve ter no mínimo ${usuario_tamanho_minimo} caracteres`)),
-        senha: Joi.string().min(senha_tamanho_minimo).required().error(new Error(`Senha deve ter no mínimo ${senha_tamanho_minimo} caracteres`))
+        senha: Joi.string().min(senha_tamanho_minimo).required().error(new Error(`Senha deve ter no mínimo ${senha_tamanho_minimo} caracteres`)),
+        logado: Joi.boolean()
     });
 
     return Schema.validate(data);
