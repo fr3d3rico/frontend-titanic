@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Alert, Col, Container, Row, Form, Button, Jumbotron, Media } from 'react-bootstrap';
 
+import Home from '../home/Home.component';
 import LoginApi from '../../services/LoginApi.service';
 import loginValidation from './Login.validation';
+import { ApiResponseCodigo } from '../../services/HttpService.service';
 
 const Login = () => {
 
@@ -27,8 +29,27 @@ const Login = () => {
             await setMsgValidacao(error);
         }
         else {
-            LoginApi(usuario);
+            LoginApi(usuario)
+                .then(resposta => {
+                    if( ApiResponseCodigo.loginOK === resposta.situacao ) {
+                        setUsuario({
+                            ...usuario,
+                            logado: true
+                        });
+                    }
+                    else {
+                        console.log(resposta);
+                        setMsgValidacao(new Error(resposta.mensagem));
+                    }
+                })
+                .catch(err => {
+                    setMsgValidacao(err);
+                });
         }
+    }
+
+    if( usuario.logado ) {
+        return <Home />
     }
 
     return (

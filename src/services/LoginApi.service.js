@@ -1,18 +1,29 @@
 import { HttpService } from './HttpService.service';
+import parser from 'fast-xml-parser';
 
-const LoginApi = (usuario) => {
+const LoginApi =  async (usuario) => {
 
     console.log(usuario);
-    HttpService('/login')
-        .then(data => {
-            /* do what you want to do in promise resolve callback function */
-            console.log(data);
+
+    return await HttpService(`/servico01?a=1&b=${usuario.usuario}&c=${usuario.senha}`)
+        .then(xml => {
+            try {
+                if( parser.validate(xml) === true) {
+                    var jsonObj = parser.parse(xml);
+                    
+                    return jsonObj.resposta;
+                } 
+                else {
+                    throw new Error('Erro ao fazer o parse do xml');
+                }
+            }
+            catch(err) {
+                throw err;
+            }
         })
         .catch(err => {
-            console.log(err);
-            //throw err;
+            throw err;
         });
-
 }
 
 export default LoginApi;
